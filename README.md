@@ -10,7 +10,7 @@ At runtime the driver looks by default for the symbolic link libbcm_host.so.0 to
 ```shell
 ln -s /usr/lib/libbcm_host.so /storage/testDrivers/libbcm_host.so.0
 ```
-and then in ~/.profile:
+and then exporting it before starting the driver in /storage/.config/autostart.sh:
 ```shell
 export LD_LIBRARY_PATH=/storage/testDrivers:$LD_LIBRARY_PATH
 ```
@@ -29,4 +29,11 @@ hdmi_timings=320 0 8 32 40 240 1 3 4 6 0 0 0 40 0 4048000 1
 hdmi_group=2
 hdmi_mode=87
 
+```
+
+## .config/autostart.sh
+```shell
+export LD_LIBRARY_PATH=/storage/testDrivers:$LD_LIBRARY_PATH
+/storage/testDrivers/fbcp-ili9341 &
+/storage/testDrivers/retrogame /storage/testDrivers/retrogame.cfg &
 ```
